@@ -1,6 +1,6 @@
 # A PS/2 keyboard emulator.
 In this directory, some code is provided to emulate a PS/2 keyboard using an arduino board an python code. Please refer to the below Table Of Content (TOC) for more details about this document.  
-In case of any issue, please open an issue on the repo or contact as at `supaerocsclub@gmail.com`.
+In case of any issue, please open an issue on the repo or contact us at `supaerocsclub@gmail.com`.
 
 
 ## Table Of Content.
