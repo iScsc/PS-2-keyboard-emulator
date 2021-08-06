@@ -1,0 +1,32 @@
+#!/bin/bash
+
+###########################################################
+# a script that retrieves the path to usable USB devices. #
+###########################################################
+
+
+dir=/dev/serial/by-id
+# check if the directory exists. if not, show an error.
+if [[ -e "$dir" ]]; then
+	# look at /dev/serial/by-id, looking for lines with form.
+	# permissions misc filename -> path
+	# cut the line to only keep the path.
+	# removes the first line, which shows only the total.
+	devices=$(ls -l "$dir" | rev | cut -d " " -f 1 | rev);
+	names=$(echo "$devices" | cut -d $'\n' -f 2-);
+
+	# if no device found, error, otherwise show them as a list.
+	if [[ ${#names[@]} == 0 ]]; then
+		echo "no device found";
+		echo "please make sure your device is connected and try again.";
+	else
+		# simple list of all the names.
+		echo "names:";
+		for name in $names; do
+			echo $"    $dir/$name";
+		done;
+	fi
+else
+	echo "$dir does not exist";
+	echo "please make sure your device is connected and try again."
+fi
